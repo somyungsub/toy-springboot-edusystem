@@ -1,4 +1,4 @@
-package myapp.edu;
+package io.sso.sso.edu;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

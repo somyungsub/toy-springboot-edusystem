@@ -1,4 +1,4 @@
-package myapp.edu;
+package io.sso.sso.edu;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

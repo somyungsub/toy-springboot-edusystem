@@ -1,4 +1,4 @@
-package myapp.edu;
+package io.sso.sso.edu;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package myapp.classify;
+package io.sso.sso.classify;
 
 
 public enum Position {

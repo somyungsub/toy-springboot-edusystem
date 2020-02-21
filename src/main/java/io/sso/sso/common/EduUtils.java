@@ -1,4 +1,4 @@
-package myapp.common;
+package io.sso.sso.common;
 
 import org.apache.poi.ss.usermodel.*;
 
