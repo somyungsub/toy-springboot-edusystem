@@ -36,11 +36,4 @@ public class EduControllerTest {
 
   }
 
-  @Test
-  public void getUser2() throws Exception {
-    mockMvc.perform(get("/users"))
-        .andExpect(status().isNotFound())
-        .andDo(print());
-  }
-
 }

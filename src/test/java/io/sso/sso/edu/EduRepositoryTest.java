@@ -1,6 +1,9 @@
 package io.sso.sso.edu;
 
 
+import io.sso.sso.classify.DutyTypeClassification;
+import io.sso.sso.classify.PositionTypeClassification;
+import io.sso.sso.common.EduUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,6 +26,8 @@ public class EduRepositoryTest {
   EduRepository eduRepository;
 
   List<Edu> list;
+
+  List<Edu> eduAll;
 
   @Before
   public void setUp() {
@@ -45,6 +51,7 @@ public class EduRepositoryTest {
             EduClassificationSmall.builder().eduClassificationCode("NETWORK").eduClassificationName("네트워크").build(),
             EduCompletion.builder().eduCompletionCode("PROFESSIONAL").eduCompletionName("전문교육").build())
     );
+    eduAll = eduRepository.findAll();
   }
 
   @Test
@@ -62,10 +69,43 @@ public class EduRepositoryTest {
   }
 
   @Test
-  public void test(){
+  public void 사원_개발자() {
+
+    /*
+      직원정보
+       - 직무 : 개발자
+       - 직급 : 사원
+     */
+
+    // 직무
+    final DutyTypeClassification developer = DutyTypeClassification.DEVELOPER;
+
+    // 직급
+    final PositionTypeClassification assistant = PositionTypeClassification.ASSISTANT;
+
+    assertThat(eduAll).isNotEmpty();
+    assertThat(eduAll).isNotNull();
+
+    final List<Edu> eduDutyList
+        = eduAll.stream()
+        .filter(edu -> EduUtils.decideDutyTypeClassification(edu, developer))
+        .collect(Collectors.toList());
+
+    System.out.println("eduDutyList.size() = " + eduDutyList.size());
+    System.out.println("================= 직무별(개발자) 교육리스트 =================");
+    eduDutyList.forEach(System.out::println);
+
+    System.out.println("================= 직급별(사원) 교육리스트 =================");
+    final List<Edu> eduPositionList = eduDutyList.stream()
+        .filter(edu -> EduUtils.isAnyMatchFromArray(
+            PositionTypeClassification.ASSISTANT.getEduKeywords(), s -> edu.getEduName().contains(s)
+            )
+        )
+        .collect(Collectors.toList());
+    System.out.println("eduPositionList.size() = " + eduPositionList.size());
+    eduPositionList.forEach(System.out::println);
 
   }
-
 
 
 }

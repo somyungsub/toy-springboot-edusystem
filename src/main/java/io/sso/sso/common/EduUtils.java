@@ -1,5 +1,7 @@
 package io.sso.sso.common;
 
+import io.sso.sso.classify.DutyTypeClassification;
+import io.sso.sso.edu.Edu;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.IOException;
@@ -51,6 +53,31 @@ public class EduUtils {
     }
     return e;
   }
+
+  // 교육직무분류판단
+  public static boolean decideDutyTypeClassification(Edu edu, DutyTypeClassification dutyType) {
+
+    final ClassificationLarge[] larges = dutyType.getClassificationLarges();
+    final ClassificationMiddle[] middles = dutyType.getClassificationMiddles();
+    final ClassificationSmall[] smalls = dutyType.getClassificationSmalls();
+
+    final boolean largeType
+        = isAnyMatchFromArray(larges, large -> large.name().equals(edu.getEduClassificationLarge().getEduClassificationCode()));
+
+    final boolean middleType
+        = isAnyMatchFromArray(middles, middle -> middle.name().equals(edu.getEduClassificationMiddle().getEduClassificationCode()));
+
+    final boolean smallType
+        = isAnyMatchFromArray(smalls, small -> small.name().equals(edu.getEduClassificationSmall().getEduClassificationCode()));
+
+    return largeType && middleType && smallType;
+  }
+
+  public static <T> boolean isAnyMatchFromArray(T[] array, Predicate<T> predicate) {
+    return Arrays.stream(array).anyMatch(predicate);
+  }
+
+
 
 }
 
