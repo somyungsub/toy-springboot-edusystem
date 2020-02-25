@@ -42,7 +42,7 @@ public class EduUtils {
 
     // 리스트 변환 및 반환
     return rowStream
-        .map(cells -> getStream(cells.cellIterator())
+        .map(cells -> EduUtils.getStream(cells.cellIterator())
             .map(Cell::getStringCellValue)
             .collect(Collectors.toList())
         )
