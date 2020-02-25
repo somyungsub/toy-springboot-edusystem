@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
@@ -19,15 +19,22 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+//@DataJpaTest
+@SpringBootTest
 public class EduRepositoryTest {
 
   @Autowired
   EduRepository eduRepository;
 
+  @Autowired
+  EduService eduService;
+
+  @Autowired
+  List<Edu> eduAllList;
+
   List<Edu> list;
 
-  List<Edu> eduAll;
+
 
   @Before
   public void setUp() {
@@ -51,7 +58,6 @@ public class EduRepositoryTest {
             EduClassificationSmall.builder().eduClassificationCode("NETWORK").eduClassificationName("네트워크").build(),
             EduCompletion.builder().eduCompletionCode("PROFESSIONAL").eduCompletionName("전문교육").build())
     );
-    eduAll = eduRepository.findAll();
   }
 
   @Test
@@ -83,13 +89,10 @@ public class EduRepositoryTest {
     // 직급
     final PositionTypeClassification assistant = PositionTypeClassification.ASSISTANT;
 
-    assertThat(eduAll).isNotEmpty();
-    assertThat(eduAll).isNotNull();
+    assertThat(eduAllList).isNotEmpty();
+    assertThat(eduAllList).isNotNull();
 
-    final List<Edu> eduDutyList
-        = eduAll.stream()
-        .filter(edu -> EduUtils.decideDutyTypeClassification(edu, developer))
-        .collect(Collectors.toList());
+    final List<Edu> eduDutyList = eduService.getEduRecommendByUserList("1234");
 
     System.out.println("eduDutyList.size() = " + eduDutyList.size());
     System.out.println("================= 직무별(개발자) 교육리스트 =================");
