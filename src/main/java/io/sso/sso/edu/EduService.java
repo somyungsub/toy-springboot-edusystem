@@ -53,21 +53,20 @@ public class EduService {
   // 교육직무분류판단
   private boolean decideDutyTypeClassification(Edu edu, DutyTypeClassification dutyType) {
 
-    final ClassificationLarge[] larges = dutyType.getClassificationLarges();
-    final ClassificationMiddle[] middles = dutyType.getClassificationMiddles();
+//    final ClassificationLarge[] larges = dutyType.getClassificationLarges();
+//    final ClassificationMiddle[] middles = dutyType.getClassificationMiddles();
     final ClassificationSmall[] smalls = dutyType.getClassificationSmalls();
 
-    final boolean largeType
-        = EduUtils.isAnyMatchFromArray(larges, large -> large.name().equals(edu.getEduClassificationLarge().getEduClassificationCode()));
-
-    final boolean middleType
-        = EduUtils.isAnyMatchFromArray(middles, middle -> middle.name().equals(edu.getEduClassificationMiddle().getEduClassificationCode()));
+//    final boolean largeType
+//        = EduUtils.isAnyMatchFromArray(larges, large -> large.name().equals(edu.getEduClassificationLarge().getEduClassificationCode()));
+//
+//    final boolean middleType
+//        = EduUtils.isAnyMatchFromArray(middles, middle -> middle.name().equals(edu.getEduClassificationMiddle().getEduClassificationCode()));
 
     final boolean smallType
         = EduUtils.isAnyMatchFromArray(smalls, small -> small.name().equals(edu.getEduClassificationSmall().getEduClassificationCode()));
 
-    return largeType && middleType ;
+//    return largeType && middleType ;
+    return smallType;
   }
-
-
 }
