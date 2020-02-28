@@ -30,11 +30,12 @@ public class EduService {
 
     // TODO 직원정보 얻는 연계
     ///////////////////// 직원정보 임의 선정 //////////////////////////////////////////////////////////////////////
-    // 직무
-    final DutyTypeClassification developer = DutyTypeClassification.DEVELOPER;
 
     // 직급
-    final PositionTypeClassification assistant = PositionTypeClassification.ASSISTANT;
+    final PositionTypeClassification assistant = getPositionTypeClassification(userId);
+
+    // 직무
+    final DutyTypeClassification developer = DutyTypeClassification.DEVELOPER;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     final List<Edu> eduDutyList
@@ -48,6 +49,18 @@ public class EduService {
             )
         )
         .collect(Collectors.toList());
+  }
+
+  private PositionTypeClassification getPositionTypeClassification(String userId) {
+    PositionTypeClassification positionTypeClassification = PositionTypeClassification.ASSISTANT;
+    if ("2".equals(userId)) {
+      positionTypeClassification = PositionTypeClassification.ASSISTANT_MANAGER;
+    } else if ("3".equals(userId)) {
+      positionTypeClassification = PositionTypeClassification.MANAGER;
+    } else if ("4".equals(userId)) {
+      positionTypeClassification = PositionTypeClassification.DUTY_MANAGER;
+    }
+    return positionTypeClassification;
   }
 
   // 교육직무분류판단
