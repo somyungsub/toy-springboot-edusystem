@@ -26,7 +26,7 @@ public class EduController {
   @GetMapping("/users/{userId}")
   public String getUser(@PathVariable String userId) {
     System.out.println("getUser");
-    List<Edu> list = eduService.getEduRecommendList(userId);
+    List<Edu> list = eduService.getEduRecommendByUserList(userId);
     String json = "";
     try {
       json = objectMapper.writeValueAsString(list);
