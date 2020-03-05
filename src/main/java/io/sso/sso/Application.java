@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class Application {
 
   // TODO 캐시로 설정하여 관리, 일단 당분간은 Bean으로 활용
   @Bean
+  @Lazy(value = false)
   public List<Edu> eduAllList() {
     return eduRepository.findAll();
   }

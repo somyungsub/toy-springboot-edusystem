@@ -28,7 +28,30 @@ public enum DutyTypeClassification {
               ClassificationSmall.FULL_STACK
           }
   ),
-//  SI_DEVELOPER,
+  SI_DEVELOPER(
+      new ClassificationLarge[]
+          {
+              ClassificationLarge.IT
+          }
+      ,
+      new ClassificationMiddle[]
+          {
+              ClassificationMiddle.DATABASE,
+              ClassificationMiddle.PROGRAMMING,
+              ClassificationMiddle.SW_ENGINEERING
+          }
+      ,
+      new ClassificationSmall[]
+          {
+              ClassificationSmall.APPLICATION,
+              ClassificationSmall.JAVA,
+              ClassificationSmall.FULL_STACK,
+              ClassificationSmall.DATA_STRUCTURE_ALGORITHM,
+              ClassificationSmall.DEVELOPMENT,
+              ClassificationSmall.HTML,
+              ClassificationSmall.TEST
+          }
+  ),
 //  DESIGNER,
 //  SECURITY,
 //  NETWORK,
