@@ -49,7 +49,11 @@ public enum DutyTypeClassification {
               ClassificationSmall.DATA_STRUCTURE_ALGORITHM,
               ClassificationSmall.DEVELOPMENT,
               ClassificationSmall.HTML,
-              ClassificationSmall.TEST
+              ClassificationSmall.TEST,
+              ClassificationSmall.MSSQL,
+              ClassificationSmall.MYSQL,
+              ClassificationSmall.NO_SQL,
+              ClassificationSmall.SQL_TUNING
           }
   ),
 //  DESIGNER,
