@@ -26,7 +26,7 @@ public class EduService {
   }
 
 
-  public List<Edu> getEduRecommendByUserList(String userId) {
+  public List<Edu> getEduRecommendByUserList(String userId, String dutyType) {
 
     // TODO 직원정보 얻는 연계
     ///////////////////// 직원정보 임의 선정 //////////////////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@ public class EduService {
     final PositionTypeClassification assistant = getPositionTypeClassification(userId);
 
     // 직무
-    final DutyTypeClassification developer = DutyTypeClassification.DEVELOPER;
+    final DutyTypeClassification developer = getDutyType(dutyType);
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     final List<Edu> eduDutyList
@@ -51,13 +51,25 @@ public class EduService {
         .collect(Collectors.toList());
   }
 
+  private DutyTypeClassification getDutyType(String dutyType) {
+    DutyTypeClassification dutyTypeClassification = DutyTypeClassification.DEVELOPER;
+    if ("1".equals(dutyType)) {
+      dutyTypeClassification = DutyTypeClassification.DEVELOPER;
+    } else if ("2".equals(dutyType)) {
+      dutyTypeClassification = DutyTypeClassification.SI_DEVELOPER;
+    } else if ("3".equals(dutyType)) {
+      dutyTypeClassification = DutyTypeClassification.DESIGNER;
+    }
+    return dutyTypeClassification;
+  }
+
   private PositionTypeClassification getPositionTypeClassification(String userId) {
     PositionTypeClassification positionTypeClassification = PositionTypeClassification.ASSISTANT;
-    if ("2".equals(userId)) {
+    if ("1".equals(userId)) {
       positionTypeClassification = PositionTypeClassification.ASSISTANT_MANAGER;
-    } else if ("3".equals(userId)) {
+    } else if ("2".equals(userId)) {
       positionTypeClassification = PositionTypeClassification.MANAGER;
-    } else if ("4".equals(userId)) {
+    } else if ("3".equals(userId)) {
       positionTypeClassification = PositionTypeClassification.DUTY_MANAGER;
     }
     return positionTypeClassification;

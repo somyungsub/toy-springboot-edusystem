@@ -23,10 +23,10 @@ public class EduController {
     return "index.html";
   }
 
-  @GetMapping("/users/{userId}")
-  public String getUser(@PathVariable String userId) {
+  @GetMapping("/users/{userId}/{dutyType}")
+  public String getUser(@PathVariable String userId, @PathVariable String dutyType) {
     System.out.println("getUser");
-    List<Edu> list = eduService.getEduRecommendByUserList(userId);
+    List<Edu> list = eduService.getEduRecommendByUserList(userId, dutyType);
     String json = "";
     try {
       json = objectMapper.writeValueAsString(list);
