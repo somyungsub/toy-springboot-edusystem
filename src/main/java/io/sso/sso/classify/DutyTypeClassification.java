@@ -56,7 +56,25 @@ public enum DutyTypeClassification {
               ClassificationSmall.SQL_TUNING
           }
   ),
-//  DESIGNER,
+  DESIGNER(
+      new ClassificationLarge[]
+          {
+              ClassificationLarge.IT
+          }
+      ,
+      new ClassificationMiddle[]
+          {
+              ClassificationMiddle.DESIGN,
+          }
+      ,
+      new ClassificationSmall[]
+          {
+              ClassificationSmall.DESIGN,
+              ClassificationSmall.HTML,
+              ClassificationSmall.DESIGN_TOOL,
+              ClassificationSmall.PUBLISHING,
+          }
+  ),
 //  SECURITY,
 //  NETWORK,
 //  SERVER,

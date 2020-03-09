@@ -63,23 +63,25 @@ public class EduService {
     return positionTypeClassification;
   }
 
+
   // 교육직무분류판단
   private boolean decideDutyTypeClassification(Edu edu, DutyTypeClassification dutyType) {
+    boolean type = decideDutyTypeClassificationSmall(edu, dutyType);
+    return type;
+  }
 
-//    final ClassificationLarge[] larges = dutyType.getClassificationLarges();
-//    final ClassificationMiddle[] middles = dutyType.getClassificationMiddles();
+  private boolean decideDutyTypeClassificationLarge(Edu edu, DutyTypeClassification dutyType) {
+    final ClassificationLarge[] larges = dutyType.getClassificationLarges();
+    return EduUtils.isAnyMatchFromArray(larges, large -> large.name().equals(edu.getEduClassificationLarge().getEduClassificationCode()));
+  }
+
+  private boolean decideDutyTypeClassificationMiddle(Edu edu, DutyTypeClassification dutyType) {
+    final ClassificationMiddle[] middles = dutyType.getClassificationMiddles();
+    return EduUtils.isAnyMatchFromArray(middles, middle -> middle.name().equals(edu.getEduClassificationMiddle().getEduClassificationCode()));
+  }
+
+  private boolean decideDutyTypeClassificationSmall(Edu edu, DutyTypeClassification dutyType) {
     final ClassificationSmall[] smalls = dutyType.getClassificationSmalls();
-
-//    final boolean largeType
-//        = EduUtils.isAnyMatchFromArray(larges, large -> large.name().equals(edu.getEduClassificationLarge().getEduClassificationCode()));
-//
-//    final boolean middleType
-//        = EduUtils.isAnyMatchFromArray(middles, middle -> middle.name().equals(edu.getEduClassificationMiddle().getEduClassificationCode()));
-
-    final boolean smallType
-        = EduUtils.isAnyMatchFromArray(smalls, small -> small.name().equals(edu.getEduClassificationSmall().getEduClassificationCode()));
-
-//    return largeType && middleType ;
-    return smallType;
+    return EduUtils.isAnyMatchFromArray(smalls, small -> small.name().equals(edu.getEduClassificationSmall().getEduClassificationCode()));
   }
 }
