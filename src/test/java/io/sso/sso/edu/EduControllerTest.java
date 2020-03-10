@@ -30,7 +30,7 @@ public class EduControllerTest {
 
   @Test
   public void getUser() throws Exception {
-    mockMvc.perform(get("/users/123"))
+    mockMvc.perform(get("/users/1/1"))
         .andExpect(status().isOk())
         .andDo(print());
 

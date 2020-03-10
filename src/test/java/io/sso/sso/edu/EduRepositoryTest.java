@@ -92,7 +92,7 @@ public class EduRepositoryTest {
     assertThat(eduAllList).isNotEmpty();
     assertThat(eduAllList).isNotNull();
 
-    final List<Edu> eduDutyList = eduService.getEduRecommendByUserList("1234");
+    final List<Edu> eduDutyList = eduService.getEduRecommendByUserList("1234","1");
 
     System.out.println("eduDutyList.size() = " + eduDutyList.size());
     System.out.println("================= 직무별(개발자) 교육리스트 =================");
