@@ -1,4 +1,4 @@
-package io.sso.sso.classify;
+package io.ssosso.classify;
 
 
 public enum PositionTypeClassification {

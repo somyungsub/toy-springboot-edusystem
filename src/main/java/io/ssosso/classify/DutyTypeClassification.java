@@ -1,9 +1,9 @@
-package io.sso.sso.classify;
+package io.ssosso.classify;
 
 
-import io.sso.sso.common.ClassificationLarge;
-import io.sso.sso.common.ClassificationMiddle;
-import io.sso.sso.common.ClassificationSmall;
+import io.ssosso.common.ClassificationLarge;
+import io.ssosso.common.ClassificationMiddle;
+import io.ssosso.common.ClassificationSmall;
 
 public enum DutyTypeClassification {
 

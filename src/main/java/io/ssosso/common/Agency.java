@@ -1,4 +1,4 @@
-package io.sso.sso.common;
+package io.ssosso.common;
 
 public enum Agency {
 

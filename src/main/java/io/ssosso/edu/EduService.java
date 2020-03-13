@@ -1,12 +1,12 @@
-package io.sso.sso.edu;
+package io.ssosso.edu;
 
 
-import io.sso.sso.classify.DutyTypeClassification;
-import io.sso.sso.classify.PositionTypeClassification;
-import io.sso.sso.common.ClassificationLarge;
-import io.sso.sso.common.ClassificationMiddle;
-import io.sso.sso.common.ClassificationSmall;
-import io.sso.sso.common.EduUtils;
+import io.ssosso.classify.DutyTypeClassification;
+import io.ssosso.classify.PositionTypeClassification;
+import io.ssosso.common.ClassificationLarge;
+import io.ssosso.common.ClassificationMiddle;
+import io.ssosso.common.ClassificationSmall;
+import io.ssosso.common.EduUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package io.sso.sso;
+package io.ssosso;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.sso.sso.common.*;
-import io.sso.sso.edu.*;
+import io.ssosso.common.*;
+import io.ssosso.edu.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -12,13 +12,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +29,8 @@ import java.util.stream.Stream;
 @RunWith(SpringRunner.class)
 //@JsonTest
 @SpringBootTest
-//@TestPropertySource(locations = "classpath:/application.properties")
-@TestPropertySource(locations = "classpath:/application-test.properties")
+@TestPropertySource(locations = "classpath:/application.properties")
+//@TestPropertySource(locations = "classpath:/application-test.properties")
 public class UnitTest {
 
   /*
@@ -39,14 +39,13 @@ public class UnitTest {
   @Autowired
   ObjectMapper objectMapper;
 
-//  @Autowired
-//  EduRepository eduRepository;
+  @Autowired
+  EduRepository eduRepository;
 
   private static Path excelPath;
 
   @Before
   public void setUp() {
-
   }
 
   @Test
@@ -109,8 +108,8 @@ public class UnitTest {
   }
 
   // 차후 적재 필요시 사용
-//  @Test
-  private void 엑셀데이터적재() throws Exception {
+  @Test
+  public void 엑셀데이터적재() throws Exception {
     final List<List<String>> lists = EduUtils.extractExcelToList(1, excelPath);
     List<Edu> saveList = new ArrayList<>();
     AtomicReference<Long> id = new AtomicReference<>(1L);
@@ -181,12 +180,9 @@ public class UnitTest {
     List<Edu> collect = saveList.stream()
         .filter(edu -> edu.getEduAgency().getAgencyCode() != null)
         .collect(Collectors.toList());
-//
-//    collect.forEach(System.out::println);
 
-
-//    eduRepository.save(collect);
-
+    // 적재
+//    eduRepository.saveAll(collect);
 
 //    saveList.stream()
 //        .filter(edu -> edu.getEduAgency().getAgencyCode() == null)

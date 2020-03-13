@@ -1,4 +1,4 @@
-package io.sso.sso.edu;
+package io.ssosso.edu;
 
 import lombok.*;
 
@@ -9,11 +9,11 @@ import javax.persistence.Id;
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
 @ToString
-public class EduClassificationLarge {
+public class EduCompletion {
 
   @Id
-  private String eduClassificationCode;
+  private String eduCompletionCode;
 
-  private String eduClassificationName;
+  private String eduCompletionName;
 
 }

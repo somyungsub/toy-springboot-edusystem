@@ -1,4 +1,4 @@
-package io.sso.sso;
+package io.ssosso;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

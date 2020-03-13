@@ -1,13 +1,12 @@
-package io.sso.sso;
+package io.ssosso;
 
-import io.sso.sso.edu.Edu;
-import io.sso.sso.edu.EduRepository;
+import io.ssosso.edu.Edu;
+import io.ssosso.edu.EduRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 
