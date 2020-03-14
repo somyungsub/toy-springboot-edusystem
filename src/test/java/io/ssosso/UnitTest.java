@@ -46,6 +46,7 @@ public class UnitTest {
 
   @Before
   public void setUp() {
+//    excelPath = Paths.get("/Users/myungsubso/Desktop/DEV/IntelliJ/toy-springboot-edusystem/src/test/resources/it_edu_data.xls");
   }
 
   @Test
@@ -108,8 +109,8 @@ public class UnitTest {
   }
 
   // 차후 적재 필요시 사용
-  @Test
-  public void 엑셀데이터적재() throws Exception {
+//  @Test
+  private void 엑셀데이터적재() throws Exception {
     final List<List<String>> lists = EduUtils.extractExcelToList(1, excelPath);
     List<Edu> saveList = new ArrayList<>();
     AtomicReference<Long> id = new AtomicReference<>(1L);
@@ -173,7 +174,6 @@ public class UnitTest {
                   )
                   .build();
               saveList.add(edu);
-//              eduRepository.saveAndFlush(edu);
             }
         );
 
@@ -182,7 +182,7 @@ public class UnitTest {
         .collect(Collectors.toList());
 
     // 적재
-//    eduRepository.saveAll(collect);
+    eduRepository.saveAll(collect);
 
 //    saveList.stream()
 //        .filter(edu -> edu.getEduAgency().getAgencyCode() == null)
