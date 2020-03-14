@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,7 +45,6 @@ public class UnitTest {
 
   @Before
   public void setUp() {
-//    excelPath = Paths.get("/Users/myungsubso/Desktop/DEV/IntelliJ/toy-springboot-edusystem/src/test/resources/it_edu_data.xls");
   }
 
   @Test
