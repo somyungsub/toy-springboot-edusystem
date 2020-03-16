@@ -30,8 +30,6 @@ public class EduService {
 
     // TODO 직원정보 얻는 연계
     ///////////////////// 직원정보 임의 선정 //////////////////////////////////////////////////////////////////////
-
-
     // 직급
     final PositionTypeClassification assistant = getPositionTypeClassification(userId);
 
